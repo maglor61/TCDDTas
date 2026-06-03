@@ -2,69 +2,83 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<title>KAM Clone</title>
+<title>KAM PRO</title>
 <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<div id="home" class="page active">
-  <h1>🚆 KAM SYSTEM</h1>
+<div class="layout">
 
-  <div class="grid">
-    <button onclick="showPanel('gar')">🚉 Gar Bilgileri</button>
-    <button onclick="showPanel('abonman')">💳 Abonman</button>
-    <button onclick="showPanel('yas')">🎂 Yaş Hesaplama</button>
-    <button onclick="showPanel('baskentray')">🚄 Başkentray</button>
-    <button onclick="showPanel('marmaray')">🚆 Marmaray</button>
-    <button onclick="showPanel('m11')">🚇 M11 Metro</button>
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <h2>🚆 KAM PRO</h2>
+
+    <button onclick="openTab('home')">🏠 Ana Sayfa</button>
+    <button onclick="openTab('stations')">🚉 İstasyonlar</button>
+    <button onclick="openTab('lines')">🚄 Hatlar</button>
+    <button onclick="openTab('abonman')">💳 Abonman</button>
+    <button onclick="openTab('calculator')">🎂 Hesaplama</button>
+    <button onclick="openTab('info')">ℹ Bilgi</button>
   </div>
-</div>
 
-<!-- GAR -->
-<div id="gar" class="page">
-  <h2>Gar Bilgileri</h2>
-  <div id="garList"></div>
-  <button onclick="showPanel('home')">⬅ Geri</button>
-</div>
+  <!-- CONTENT -->
+  <div class="content">
 
-<!-- ABONMAN -->
-<div id="abonman" class="page">
-  <h2>Abonman</h2>
-  <input id="from">
-  <input id="to">
-  <button onclick="calcAbonman()">Hesapla</button>
-  <p id="abonmanResult"></p>
-  <button onclick="showPanel('home')">⬅ Geri</button>
-</div>
+    <!-- HOME -->
+    <div id="home" class="page active">
+      <h1>Dashboard</h1>
 
-<!-- YAŞ -->
-<div id="yas" class="page">
-  <h2>Yaş Hesaplama</h2>
-  <input type="date" id="birth">
-  <button onclick="calcAge()">Hesapla</button>
-  <p id="ageResult"></p>
-  <button onclick="showPanel('home')">⬅ Geri</button>
-</div>
+      <div class="grid">
+        <div class="card">🚉 120 İstasyon</div>
+        <div class="card">🚄 6 Hat</div>
+        <div class="card">📊 Sistem Aktif</div>
+        <div class="card">⚡ Gerçek Zamanlı</div>
+      </div>
+    </div>
 
-<!-- BASKENTRAY -->
-<div id="baskentray" class="page">
-  <h2>Başkentray</h2>
-  <div id="baskentList"></div>
-  <button onclick="showPanel('home')">⬅ Geri</button>
-</div>
+    <!-- STATIONS -->
+    <div id="stations" class="page">
+      <h2>İstasyonlar</h2>
+      <input oninput="renderStations()" id="search" placeholder="İstasyon ara...">
+      <div id="stationList"></div>
+    </div>
 
-<!-- MARMARAY -->
-<div id="marmaray" class="page">
-  <h2>Marmaray</h2>
-  <div id="marmarayList"></div>
-  <button onclick="showPanel('home')">⬅ Geri</button>
-</div>
+    <!-- LINES -->
+    <div id="lines" class="page">
+      <h2>Hatlar</h2>
+      <div id="lineList"></div>
+    </div>
 
-<!-- M11 -->
-<div id="m11" class="page">
-  <h2>M11 Metro</h2>
-  <div id="m11List"></div>
-  <button onclick="showPanel('home')">⬅ Geri</button>
+    <!-- ABONMAN -->
+    <div id="abonman" class="page">
+      <h2>Abonman Sistemi</h2>
+
+      <input id="from" placeholder="Nereden">
+      <input id="to" placeholder="Nereye">
+
+      <button onclick="calc()">Hesapla</button>
+
+      <p id="result"></p>
+    </div>
+
+    <!-- CALCULATOR -->
+    <div id="calculator" class="page">
+      <h2>Yaş Hesaplama</h2>
+
+      <input type="date" id="birth">
+      <button onclick="age()">Hesapla</button>
+
+      <p id="ageResult"></p>
+    </div>
+
+    <!-- INFO -->
+    <div id="info" class="page">
+      <h2>Bilgi Paneli</h2>
+      <p>Bu sistem KAM PRO demo versiyonudur.</p>
+    </div>
+
+  </div>
 </div>
 
 <script src="app.js"></script>
