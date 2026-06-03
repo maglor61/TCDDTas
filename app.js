@@ -1,51 +1,68 @@
-const DATA = {
-  gar: ["Ankara", "Eskişehir", "Konya", "İstanbul"],
-  baskentray: ["06:00", "06:30", "07:00", "07:30"],
-  marmaray: ["05:10", "05:20", "05:30", "05:40"],
-  m11: ["06:00", "06:15", "06:30", "06:45"]
-};
+const stations = [
+  "Ankara",
+  "Eskişehir",
+  "Konya",
+  "İstanbul",
+  "Söğütlüçeşme",
+  "Pendik",
+  "Gebze"
+];
 
-// PANEL SİSTEMİ
-function showPanel(id) {
-  document.querySelectorAll('.page')
-    .forEach(p => p.classList.remove('active'));
+const lines = [
+  "Marmaray",
+  "Başkentray",
+  "M11 Metro",
+  "YHT Ankara-İstanbul"
+];
 
-  document.getElementById(id).classList.add('active');
+// PAGE SYSTEM
+function openTab(id) {
+  document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
 
-  if (id === "gar") renderGar();
-  if (id === "baskentray") render("baskentrayList", DATA.baskentray);
-  if (id === "marmaray") render("marmarayList", DATA.marmaray);
-  if (id === "m11") render("m11List", DATA.m11);
+  if (id === "stations") renderStations();
+  if (id === "lines") renderLines();
 }
 
-// GAR
-function renderGar() {
-  const el = document.getElementById("garList");
-  el.innerHTML = "";
-  DATA.gar.forEach(g => {
-    el.innerHTML += `<div class="card">${g}</div>`;
-  });
+// STATIONS
+function renderStations() {
+  const q = document.getElementById("search")?.value?.toLowerCase() || "";
+  const list = document.getElementById("stationList");
+
+  list.innerHTML = "";
+
+  stations
+    .filter(s => s.toLowerCase().includes(q))
+    .forEach(s => {
+      list.innerHTML += `<div class="card">🚉 ${s}</div>`;
+    });
 }
 
-// GENERIC RENDER
-function render(id, arr) {
-  const el = document.getElementById(id);
-  el.innerHTML = "";
-  arr.forEach(x => {
-    el.innerHTML += `<div class="card">${x}</div>`;
+// LINES
+function renderLines() {
+  const list = document.getElementById("lineList");
+  list.innerHTML = "";
+
+  lines.forEach(l => {
+    list.innerHTML += `<div class="card">🚄 ${l}</div>`;
   });
 }
 
 // ABONMAN
-function calcAbonman() {
-  document.getElementById("abonmanResult").innerText =
-    "Örnek ücret: 120 TL";
+function calc() {
+  const f = document.getElementById("from").value;
+  const t = document.getElementById("to").value;
+
+  document.getElementById("result").innerText =
+    `${f} → ${t} : 120 TL (örnek)`;
 }
 
-// YAŞ
-function calcAge() {
+// AGE
+function age() {
   const b = new Date(document.getElementById("birth").value);
   const now = new Date();
-  let age = now.getFullYear() - b.getFullYear();
-  document.getElementById("ageResult").innerText = age;
+
+  let a = now.getFullYear() - b.getFullYear();
+
+  document.getElementById("ageResult").innerText = "Yaş: " + a;
 }
