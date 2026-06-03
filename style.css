@@ -1,0 +1,43 @@
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #0b0f1a;
+  color: white;
+}
+
+.page {
+  display: none;
+  padding: 20px;
+}
+
+.active {
+  display: block;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  max-width: 500px;
+  margin: auto;
+}
+
+button {
+  padding: 12px;
+  border: 0;
+  border-radius: 10px;
+  background: #1e3a8a;
+  color: white;
+}
+
+button:hover {
+  background: #7f1d1d;
+}
+
+.card {
+  background: #111827;
+  padding: 10px;
+  margin: 6px;
+  border-left: 4px solid #7f1d1d;
+  border-radius: 10px;
+}
