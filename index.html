@@ -1,1 +1,72 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>KAM Clone</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+<div id="home" class="page active">
+  <h1>🚆 KAM SYSTEM</h1>
+
+  <div class="grid">
+    <button onclick="showPanel('gar')">🚉 Gar Bilgileri</button>
+    <button onclick="showPanel('abonman')">💳 Abonman</button>
+    <button onclick="showPanel('yas')">🎂 Yaş Hesaplama</button>
+    <button onclick="showPanel('baskentray')">🚄 Başkentray</button>
+    <button onclick="showPanel('marmaray')">🚆 Marmaray</button>
+    <button onclick="showPanel('m11')">🚇 M11 Metro</button>
+  </div>
+</div>
+
+<!-- GAR -->
+<div id="gar" class="page">
+  <h2>Gar Bilgileri</h2>
+  <div id="garList"></div>
+  <button onclick="showPanel('home')">⬅ Geri</button>
+</div>
+
+<!-- ABONMAN -->
+<div id="abonman" class="page">
+  <h2>Abonman</h2>
+  <input id="from">
+  <input id="to">
+  <button onclick="calcAbonman()">Hesapla</button>
+  <p id="abonmanResult"></p>
+  <button onclick="showPanel('home')">⬅ Geri</button>
+</div>
+
+<!-- YAŞ -->
+<div id="yas" class="page">
+  <h2>Yaş Hesaplama</h2>
+  <input type="date" id="birth">
+  <button onclick="calcAge()">Hesapla</button>
+  <p id="ageResult"></p>
+  <button onclick="showPanel('home')">⬅ Geri</button>
+</div>
+
+<!-- BASKENTRAY -->
+<div id="baskentray" class="page">
+  <h2>Başkentray</h2>
+  <div id="baskentList"></div>
+  <button onclick="showPanel('home')">⬅ Geri</button>
+</div>
+
+<!-- MARMARAY -->
+<div id="marmaray" class="page">
+  <h2>Marmaray</h2>
+  <div id="marmarayList"></div>
+  <button onclick="showPanel('home')">⬅ Geri</button>
+</div>
+
+<!-- M11 -->
+<div id="m11" class="page">
+  <h2>M11 Metro</h2>
+  <div id="m11List"></div>
+  <button onclick="showPanel('home')">⬅ Geri</button>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
